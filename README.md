@@ -2,7 +2,9 @@
 
 パナマ運河の閘門システムをインタラクティブに体験できるWebシミュレーターです。バルブ、ゲート、船の操作を通じて、水位変化、船の排水量の影響、ゲートにかかる圧力などを学ぶことができます。
 
-![Panama Canal Lock Simulator](screenshot.png)
+## デモ
+
+**🚀 [ライブデモはこちら](https://kuboaki.github.io/panama-canal-simulator-web/)**
 
 ## 主な機能
 
@@ -11,10 +13,6 @@
 - **船の影響シミュレーション**: 船の排水量と占有面積が水位に与える影響を可視化
 - **物理計算**: 水位差に基づくゲートへの圧力と荷重を計算
 - **視覚的フィードバック**: 閘門断面図でリアルタイムに状態を確認
-
-## デモ
-
-[Live Demo](https://yourusername.github.io/panama-canal-simulator/) *(GitHub Pagesにデプロイ後)*
 
 ## 技術スタック
 
@@ -33,8 +31,8 @@
 
 ```bash
 # リポジトリをクローン
-git clone https://github.com/yourusername/panama-canal-simulator.git
-cd panama-canal-simulator
+git clone https://github.com/kuboaki/panama-canal-simulator-web.git
+cd panama-canal-simulator-web
 
 # 依存パッケージをインストール
 npm install
@@ -53,6 +51,13 @@ npm run build
 ```
 
 ビルドされたファイルは `build/` フォルダに出力されます。
+
+### GitHub Pagesへのデプロイ
+
+```bash
+# GitHub Pagesにデプロイ
+npm run deploy
+```
 
 ## 使い方
 
@@ -89,10 +94,9 @@ npm run build
 ## プロジェクト構成
 
 ```
-panama-canal-simulator/
+panama-canal-simulator-web/
 ├── public/
-│   ├── index.html
-│   └── favicon.ico
+│   └── index.html
 ├── src/
 │   ├── App.js          # メインコンポーネント
 │   ├── index.js        # エントリーポイント
@@ -112,7 +116,7 @@ MIT License
 
 ## 作者
 
-- あなたの名前 - [GitHub Profile](https://github.com/yourusername)
+- Akihiko Kubo - [GitHub Profile](https://github.com/kuboaki)
 
 ## 謝辞
 

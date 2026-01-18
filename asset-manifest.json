@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.78fe4f4d.css",
-    "main.js": "/static/js/main.068f16c3.js",
-    "index.html": "/index.html",
-    "main.78fe4f4d.css.map": "/static/css/main.78fe4f4d.css.map",
-    "main.068f16c3.js.map": "/static/js/main.068f16c3.js.map"
+    "main.css": "/panama-canal-simulator-web/static/css/main.78fe4f4d.css",
+    "main.js": "/panama-canal-simulator-web/static/js/main.068f16c3.js",
+    "index.html": "/panama-canal-simulator-web/index.html",
+    "main.78fe4f4d.css.map": "/panama-canal-simulator-web/static/css/main.78fe4f4d.css.map",
+    "main.068f16c3.js.map": "/panama-canal-simulator-web/static/js/main.068f16c3.js.map"
   },
   "entrypoints": [
     "static/css/main.78fe4f4d.css",

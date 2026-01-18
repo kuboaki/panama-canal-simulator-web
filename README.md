@@ -2,11 +2,18 @@
 
 An interactive web simulator for experiencing the Panama Canal lock system. Learn about water level changes, ship displacement effects, and gate pressure through hands-on operation of valves, gates, and ships.
 
+![Panama Canal Lock Simulator - Lock Chamber View](images/screenshot01.png)
+
 **[日本語版 README はこちら](README_ja.md)**
 
 ## Live Demo
 
 **🚀 [Try the simulator here](https://kuboaki.github.io/panama-canal-simulator-web/)**
+
+## Overview
+
+<img src="images/screenshot02.png" width="300" alt="シミュレーター全体画面">
+
 
 ## Key Features
 

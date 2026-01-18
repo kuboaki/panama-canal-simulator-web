@@ -2,9 +2,18 @@
 
 パナマ運河の閘門システムをインタラクティブに体験できるWebシミュレーターです。バルブ、ゲート、船の操作を通じて、水位変化、船の排水量の影響、ゲートにかかる圧力などを学ぶことができます。
 
+![パナマ運河閘門シミュレーター - 閘門断面図](images/screenshot01.png)
+
+**[English README is here](README.md)**
+
 ## デモ
 
 **🚀 [ライブデモはこちら](https://kuboaki.github.io/panama-canal-simulator-web/)**
+
+## 概要
+
+<img src="images/screenshot02.png" width="300" alt="Full Simulator Interface">
+
 
 ## 主な機能
 
@@ -116,7 +125,7 @@ MIT License
 
 ## 作者
 
-- Shin Kuboaki - [GitHub Profile](https://github.com/kuboaki)
+- Shin Kuboaki (久保秋 真) - [GitHub Profile](https://github.com/kuboaki)
 
 ## 謝辞
 

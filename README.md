@@ -1,124 +1,127 @@
-# パナマ運河閘門シミュレーター
+# Panama Canal Lock Simulator
 
-パナマ運河の閘門システムをインタラクティブに体験できるWebシミュレーターです。バルブ、ゲート、船の操作を通じて、水位変化、船の排水量の影響、ゲートにかかる圧力などを学ぶことができます。
+An interactive web simulator for experiencing the Panama Canal lock system. Learn about water level changes, ship displacement effects, and gate pressure through hands-on operation of valves, gates, and ships.
 
-## デモ
+**[日本語版 README はこちら](README_ja.md)**
 
-**🚀 [ライブデモはこちら](https://kuboaki.github.io/panama-canal-simulator-web/)**
+## Live Demo
 
-## 主な機能
+**🚀 [Try the simulator here](https://kuboaki.github.io/panama-canal-simulator-web/)**
 
-- **リアルタイムシミュレーション**: バルブとゲートを操作して水位を調整
-- **時間スケール調整**: 1倍速から100倍速まで調整可能
-- **船の影響シミュレーション**: 船の排水量と占有面積が水位に与える影響を可視化
-- **物理計算**: 水位差に基づくゲートへの圧力と荷重を計算
-- **視覚的フィードバック**: 閘門断面図でリアルタイムに状態を確認
+## Key Features
 
-## 技術スタック
+- **Real-time Simulation**: Adjust water levels by operating valves and gates
+- **Time Scale Control**: Adjustable from 1x to 100x speed
+- **Ship Displacement Effects**: Visualize how ship displacement and horizontal area affect water levels
+- **Physics Calculations**: Calculate and display gate pressure and load based on water level differences
+- **Visual Feedback**: Real-time status display with cross-sectional view of the lock chamber
+
+## Tech Stack
 
 - React 18
 - Tailwind CSS (CDN)
-- Lucide React (アイコン)
+- Lucide React (icons)
 
-## ローカルでの実行方法
+## Running Locally
 
-### 前提条件
+### Prerequisites
 
-- Node.js (v14以上)
-- npm または yarn
+- Node.js (v14 or higher)
+- npm or yarn
 
-### インストール
+### Installation
 
 ```bash
-# リポジトリをクローン
+# Clone the repository
 git clone https://github.com/kuboaki/panama-canal-simulator-web.git
 cd panama-canal-simulator-web
 
-# 依存パッケージをインストール
+# Install dependencies
 npm install
 
-# 開発サーバーを起動
+# Start development server
 npm start
 ```
 
-ブラウザで `http://localhost:3000` を開いてください。
+Open `http://localhost:3000` in your browser.
 
-### ビルド
+### Build
 
 ```bash
-# 本番用にビルド
+# Build for production
 npm run build
 ```
 
-ビルドされたファイルは `build/` フォルダに出力されます。
+Built files will be output to the `build/` folder.
 
-### GitHub Pagesへのデプロイ
+### Deploy to GitHub Pages
 
 ```bash
-# GitHub Pagesにデプロイ
+# Deploy to GitHub Pages
 npm run deploy
 ```
 
-## 使い方
+## How to Use
 
-### 基本操作
+### Basic Operations
 
-1. **シミュレーション開始**: 「開始」ボタンをクリック
-2. **バルブ操作**: スライダーでバルブ開度を調整（0-100%）
-3. **ゲート操作**: ボタンでゲートを開閉
-4. **船の移動**: ゲートが開いている時、ボタンで船を移動
+1. **Start Simulation**: Click the "開始" (Start) button
+2. **Valve Operation**: Adjust valve opening with sliders (0-100%)
+3. **Gate Operation**: Open/close gates with buttons
+4. **Ship Movement**: Move ships with buttons when gates are open
 
-### 典型的な運用フロー
+### Typical Operation Flow
 
-1. 船が上流にある状態でスタート
-2. 上部ゲートを開き、船を閘門へ移動
-3. 上部ゲートを閉じる
-4. 下部バルブで閘門の水位を調整（表示水位を下流と同じ10mに）
-5. 水位差がゼロになったら下部ゲートを開く
-6. 船を下流へ移動
+1. Start with the ship in the upper stream
+2. Open the upper gate and move the ship into the chamber
+3. Close the upper gate
+4. Adjust chamber water level to match lower stream (10m) using lower valve
+5. Open lower gate when water levels are equal (load becomes zero)
+6. Move ship to lower stream
 
-### 重要な概念
+### Important Concepts
 
-**船の排水量と水位**
+**Ship Displacement and Water Levels**
 
-船が閘門内にいる場合、水位の見え方に注意が必要です：
+When a ship is in the lock chamber, pay attention to how water levels appear:
 
-- **基準水位**: 水のみの高さ
-- **表示水位**: 船の排水量による上昇を含めた高さ
-- **ゲート開放条件**: 表示水位が隣接する水域と等しくなる必要があります
+- **Base Water Level**: Height of water only
+- **Display Water Level**: Height including rise from ship displacement
+- **Gate Opening Condition**: Display water level must equal adjacent water area
 
-例：排水量70,000m³、船の面積6,000m²の場合
-- 船による水位上昇: 約2.1m
-- 下流（10m）に合わせるには基準水位を約7.9mにする
+Example: For a ship with 70,000m³ displacement and 6,000m² horizontal area
+- Water level rise from ship: approximately 2.1m
+- To match lower stream (10m), base water level should be approximately 7.9m
 
-## プロジェクト構成
+## Project Structure
 
 ```
 panama-canal-simulator-web/
 ├── public/
 │   └── index.html
 ├── src/
-│   ├── App.js          # メインコンポーネント
-│   ├── index.js        # エントリーポイント
-│   └── index.css       # スタイル
+│   ├── App.js          # Main component
+│   ├── index.js        # Entry point
+│   └── index.css       # Styles
 ├── package.json
 ├── README.md
+├── README_ja.md
 └── .gitignore
 ```
 
-## ライセンス
+## License
 
 MIT License
 
-## 貢献
+## Contributing
 
-プルリクエストを歓迎します！大きな変更の場合は、まずissueを開いて変更内容を議論してください。
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
-## 作者
+## Author
 
-- Shin Kuboaki - [GitHub Profile](https://github.com/kuboaki)
+- Shin Kuboaki (久保秋 真) - [GitHub Profile](https://github.com/kuboaki)
 
-## 謝辞
+## Acknowledgments
 
-- パナマ運河の運用についての教育目的で作成
-- 物理シミュレーションは簡易化されています
+- Created for educational purposes about Panama Canal operations
+- Physics simulation is simplified for demonstration purposes

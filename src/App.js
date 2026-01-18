@@ -85,7 +85,21 @@ function App() {
 
         let newChamberLevel = prevChamberLevel;
 
-        if (upperValve > 0 && actualLevel < upperLevel) {
+        // ゲートが開いている場合は自然に水位が均等化される
+        const GATE_EQUALIZATION_SPEED = 5.0; // m/s（ゲート開放時の均等化速度）
+
+        if (!upperGate) {
+          // 上部ゲートが開いている場合、上流と閘門の水位を均等化
+          const levelDiff = upperLevel - actualLevel;
+          if (Math.abs(levelDiff) > 0.01) {
+            const equalizeChange = Math.sign(levelDiff) * Math.min(
+              Math.abs(levelDiff),
+              GATE_EQUALIZATION_SPEED * dt
+            );
+            newChamberLevel += equalizeChange;
+          }
+        } else if (upperValve > 0 && actualLevel < upperLevel) {
+          // 上部ゲートが閉じている場合のみ、バルブで水位調整
           const flowRate = (upperValve / 100) * VALVE_MAX_FLOW;
           const volumeChange = flowRate * dt;
           const levelChange = volumeChange / effectiveArea;
@@ -94,11 +108,25 @@ function App() {
           newChamberLevel += actualChange;
         }
 
-        if (lowerValve > 0 && actualLevel > lowerLevel) {
+        // 下部ゲートの処理（上部と同様）
+        const updatedActualLevel = newChamberLevel + shipRise;
+
+        if (!lowerGate) {
+          // 下部ゲートが開いている場合、閘門と下流の水位を均等化
+          const levelDiff = lowerLevel - updatedActualLevel;
+          if (Math.abs(levelDiff) > 0.01) {
+            const equalizeChange = Math.sign(levelDiff) * Math.min(
+              Math.abs(levelDiff),
+              GATE_EQUALIZATION_SPEED * dt
+            );
+            newChamberLevel += equalizeChange;
+          }
+        } else if (lowerValve > 0 && updatedActualLevel > lowerLevel) {
+          // 下部ゲートが閉じている場合のみ、バルブで水位調整
           const flowRate = (lowerValve / 100) * VALVE_MAX_FLOW;
           const volumeChange = flowRate * dt;
           const levelChange = volumeChange / effectiveArea;
-          const maxChange = actualLevel - lowerLevel;
+          const maxChange = updatedActualLevel - lowerLevel;
           const actualChange = Math.min(levelChange, maxChange);
           newChamberLevel -= actualChange;
         }
@@ -116,7 +144,7 @@ function App() {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [isRunning, upperValve, lowerValve, shipPosition, shipDisplacement, shipArea, timeScale, upperLevel, lowerLevel]);
+  }, [isRunning, upperValve, lowerValve, shipPosition, shipDisplacement, shipArea, timeScale, upperLevel, lowerLevel, upperGate, lowerGate]);
 
   const reset = () => {
     setIsRunning(false);
@@ -362,7 +390,7 @@ function App() {
               <div className="absolute inset-0 border-l-2 border-r-2 border-gray-500 pointer-events-none"></div>
               <div className="absolute bottom-full left-0 right-0 text-center font-semibold mb-2">上流</div>
               <div
-                className="bg-blue-400 w-full transition-all duration-300 relative"
+                className="bg-blue-400 w-full transition-none relative"
                 style={{ height: `${scale(upperLevel)}%` }}
               >
                 <div className="text-white font-bold pt-2 px-2">{upperLevel.toFixed(1)}m</div>
@@ -378,7 +406,7 @@ function App() {
               <div className="absolute inset-0 border-l-4 border-r-4 border-gray-700 pointer-events-none"></div>
               <div className="absolute bottom-full left-0 right-0 text-center font-semibold mb-2">閘門</div>
               <div
-                className="bg-blue-500 w-full transition-all duration-300 relative"
+                className="bg-blue-500 w-full transition-none relative"
                 style={{ height: `${scale(actualChamberLevel)}%` }}
               >
                 <div className="text-white font-bold pt-2 px-2">
@@ -410,7 +438,7 @@ function App() {
               <div className="absolute inset-0 border-l-2 border-r-2 border-gray-500 pointer-events-none"></div>
               <div className="absolute bottom-full left-0 right-0 text-center font-semibold mb-2">下流</div>
               <div
-                className="bg-blue-400 w-full transition-all duration-300 relative"
+                className="bg-blue-400 w-full w-full transition-none relative"
                 style={{ height: `${scale(lowerLevel)}%` }}
               >
                 <div className="text-white font-bold pt-2 px-2">{lowerLevel.toFixed(1)}m</div>

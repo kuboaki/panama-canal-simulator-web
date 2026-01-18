@@ -116,7 +116,7 @@ MIT License
 
 ## 作者
 
-- Akihiko Kubo - [GitHub Profile](https://github.com/kuboaki)
+- Shin Kuboaki - [GitHub Profile](https://github.com/kuboaki)
 
 ## 謝辞
 
